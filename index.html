@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Multiplication Table Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+    h2 {
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+    input[type="number"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 60%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .table-output {
+      margin-top: 20px;
+      text-align: left;
+      font-size: 16px;
+      white-space: pre-line;
+      color: #333;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Multiplication Table Generator</h2>
+  <input type="number" id="numberInput" placeholder="Enter a number">
+  <br><br>
+  <button onclick="showMultiplicationTable()">Show Table</button>
+  <div id="output" class="table-output"></div>
+</div>
+<script>
+  function showMultiplicationTable() {
+    const input = document.getElementById("numberInput").value.trim();
+    const outputDiv = document.getElementById("output");
+    if (input === "") {
+      outputDiv.innerHTML = "<span class='error'>Please enter a number.</span>";
+      return;
+    }
+    const n = Number(input);
+    if (isNaN(n)) {
+      outputDiv.innerHTML = "<span class='error'>Invalid input. Please enter a valid number.</span>";
+      return;
+    }
+    let table = `Multiplication Table of ${n}:\n\n`;
+    for (let i = 1; i <= 10; i++) {
+      table += `${n} × ${i} = ${n * i}\n`;
+    }
+    outputDiv.innerText = table;
+  }
+</script>
+</body>
+</html>
